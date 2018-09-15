@@ -9,16 +9,17 @@
     "48": "icon48.png",
     "16": "icon16.png"
   },
-
-  "browser_action": {
-    "default_icon": "icon16.png",
-    "default_popup": "popup.html"
-  },
-
-  "background": {
-    "scripts": ["eventPage.js"],
-    "persistent": false
-  },
-
-  "permissions": ["storage", "notifications", "contextMenus"]
+  "background" : { "scripts": ["background.js"] },
+  "permissions": [ "contextMenus", "http://*/*", "https://*/*" ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true
+    }
+  ]  
 }
